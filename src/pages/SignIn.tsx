@@ -1,11 +1,19 @@
 import React from "react";
-import { Button, makeStyles, Typography } from "@material-ui/core";
+import {
+  Button,
+  makeStyles,
+  Typography,
+  FormControl,
+  FormGroup,
+  TextField,
+} from "@material-ui/core";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import SearchIcon from "@material-ui/icons/Search";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutlined";
 import MessageIcon from "@material-ui/icons/MessageOutlined";
+import Modal from "../components/Modal";
 
-const useSyles = makeStyles((theme) => ({
+export const useSylesSignIn = makeStyles((theme) => ({
   button: {
     fontWeight: 700,
   },
@@ -60,7 +68,22 @@ const useSyles = makeStyles((theme) => ({
 }));
 
 const SignIn = () => {
-  const classes = useSyles();
+  const classes = useSylesSignIn();
+  const [visibleModal, setVisibleModal] = React.useState<
+    "logIn" | "register"
+  >();
+
+  const handleClickOpenLogIn = (): void => {
+    setVisibleModal("logIn");
+  };
+
+  const handleClickOpenRegister = (): void => {
+    setVisibleModal("register");
+  };
+
+  const handleCloseModal = (): void => {
+    setVisibleModal(undefined);
+  };
 
   return (
     <div className={classes.wrapper}>
@@ -100,14 +123,100 @@ const SignIn = () => {
             variant="contained"
             color="primary"
             style={{ marginRight: "10px" }}
+            onClick={handleClickOpenRegister}
           >
             Sign Up
           </Button>
-          <Button variant="outlined" color="primary">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleClickOpenLogIn}
+          >
             Log In
           </Button>
         </div>
       </section>
+      <Modal
+        classes={classes}
+        title="Log in"
+        open={visibleModal === "logIn"}
+        onClose={handleCloseModal}
+      >
+        <FormControl component="fieldset" fullWidth>
+          <FormGroup aria-label="position" row>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="emailLogIn"
+              label="Email Address"
+              type="email"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="password"
+              label="Password"
+              type="password"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+            />
+          </FormGroup>
+        </FormControl>
+      </Modal>
+
+      <Modal
+        classes={classes}
+        title="Register"
+        open={visibleModal === "register"}
+        onClose={handleCloseModal}
+      >
+        <FormControl component="fieldset" fullWidth>
+          <FormGroup aria-label="position" row>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Name"
+              type="name"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="emailRegister"
+              label="Email Address"
+              type="email"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="password"
+              label="Password"
+              type="password"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              fullWidth
+            />
+          </FormGroup>
+        </FormControl>
+      </Modal>
     </div>
   );
 };
