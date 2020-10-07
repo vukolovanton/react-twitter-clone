@@ -67,7 +67,7 @@ export const useSylesSignIn = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = () => {
+const SignIn: React.FC = (): React.ReactElement => {
   const classes = useSylesSignIn();
   const [visibleModal, setVisibleModal] = React.useState<
     "logIn" | "register"
