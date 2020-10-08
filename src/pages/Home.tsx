@@ -1,42 +1,51 @@
 import React from "react";
 import {
-  Avatar,
   Container,
   createStyles,
   Grid,
-  IconButton,
   InputBase,
   makeStyles,
   Paper,
   Typography,
   withStyles,
 } from "@material-ui/core";
-import {
-  Bookmark,
-  Message,
-  Search,
-  Twitter,
-  Notifications,
-  List,
-  PermIdentityOutlined,
-  ChatBubbleOutlineOutlined,
-  RepeatOutlined,
-  FavoriteBorderOutlined,
-  ShareOutlined,
-} from "@material-ui/icons";
 
-const useHomeStyles = makeStyles((theme) => ({
+import Tweet from "../components/Tweet";
+import SideMenu from "../components/SideMenu";
+
+export const useHomeStyles = makeStyles((theme) => ({
   wrapper: {
     height: "100vh",
   },
   sideMenuList: {
-    listStyle: "none",
     padding: 0,
     margin: 0,
   },
   sideMenuListItem: {
-    display: "flex",
-    alignItems: "center",
+    "&:hover": {
+      "& div": {
+        backgroundColor: "rgba(29, 161, 242, 0.1)",
+      },
+      "& h6": {
+        color: theme.palette.primary.main,
+      },
+      "& svg path": {
+        color: theme.palette.primary.main,
+      },
+    },
+    listStyle: "none",
+    "& div": {
+      display: "inline-flex",
+      padding: "0 30px",
+      alignItems: "center",
+      cursor: "pointer",
+      borderRadius: 30,
+      height: 60,
+      transition: "background-color 0.1s ease-in-out",
+    },
+  },
+  sideMenuTweetButton: {
+    color: "white",
   },
   sideMenuListItemLabel: {
     fontWeight: 700,
@@ -69,7 +78,14 @@ const useHomeStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     width: 450,
   },
-  tweet: {},
+  tweet: {
+    cursor: "pointer",
+    paddingTop: 15,
+    paddingLeft: 15,
+    "&:hover": {
+      backgroundColor: "#f5f8fa",
+    },
+  },
 }));
 
 const SearchTextField = withStyles(() =>
@@ -90,156 +106,25 @@ const Home = () => {
     <Container maxWidth="lg" className={classes.wrapper}>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <ul>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="home" color="primary">
-                <Twitter
-                  color="primary"
-                  className={classes.sideMenuListItemIcon}
-                />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                Home
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                aria-label="search"
-                className={classes.sideMenuListItemIcon}
-              >
-                <Search />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                Search
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                aria-label="messages"
-                className={classes.sideMenuListItemIcon}
-              >
-                <Message />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                Messages
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                aria-label="notifications"
-                className={classes.sideMenuListItemIcon}
-              >
-                <Notifications />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                Notifications
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                aria-label="bookmarks"
-                className={classes.sideMenuListItemIcon}
-              >
-                <Bookmark />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                Bookmarks
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                aria-label="list"
-                className={classes.sideMenuListItemIcon}
-              >
-                <List />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                List
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                aria-label="profile"
-                className={classes.sideMenuListItemIcon}
-              >
-                <PermIdentityOutlined />
-              </IconButton>
-              <Typography
-                variant="h6"
-                className={classes.sideMenuListItemLabel}
-              >
-                Profile
-              </Typography>
-            </li>
-          </ul>
+          <SideMenu classes={classes} />
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.tweetsWrapper}>
             <Paper className={classes.tweetsHeader}>
               <Typography variant="h6">Main page</Typography>
             </Paper>
-            <Paper className={classes.tweetsHeader} variant="outlined">
-              <Grid container spacing={3}>
-                <Grid item xs={1}>
-                  <Avatar alt="User avatar" src="" />
-                </Grid>
-                <Grid item xs={11}>
-                  <Typography>
-                    <b>vukolov</b>
-                    <span className={classes.tweetsUsername}>@vkvntn</span>
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    Со временем отношения у Марии Федоровны испортились не
-                    только с венценосной свекровью, но и с супругом. Павел
-                    Петрович становился все более замкнутым, неуравновешенным,
-                    он имел любовниц и не скрывал этого.
-                  </Typography>
-                  <div className={classes.tweetFooter}>
-                    <div className={classes.tweet}>
-                      <IconButton>
-                        <ChatBubbleOutlineOutlined style={{ fontSize: 16 }} />
-                      </IconButton>
-                      <span>1</span>
-                    </div>
-                    <div className={classes.tweet}>
-                      <IconButton>
-                        <RepeatOutlined style={{ fontSize: 16 }} />
-                      </IconButton>
-                      <span>3</span>
-                    </div>
-                    <div className={classes.tweet}>
-                      <IconButton>
-                        <FavoriteBorderOutlined style={{ fontSize: 16 }} />
-                      </IconButton>
-                      <span>6</span>
-                    </div>
-                    <div className={classes.tweet}>
-                      <IconButton>
-                        <ShareOutlined style={{ fontSize: 16 }} />
-                      </IconButton>
-                    </div>
-                  </div>
-                </Grid>
-              </Grid>
-            </Paper>
+            <Tweet
+              text="Со временем отношения у Марии Федоровны испортились не только с
+              венценосной свекровью, но и с супругом. Павел Петрович становился
+              все более замкнутым, неуравновешенным, он имел любовниц и не
+              скрывал этого."
+              classes={classes}
+              user={{
+                fullname: "Vukolov Anton",
+                username: "@vklvn",
+                avatarUrl: "",
+              }}
+            />
           </Paper>
         </Grid>
         <Grid item xs={3}>
