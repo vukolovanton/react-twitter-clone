@@ -1,4 +1,4 @@
-import { Button, IconButton, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import {
   Twitter,
   Search,

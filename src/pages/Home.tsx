@@ -12,6 +12,10 @@ import {
 
 import Tweet from "../components/Tweet";
 import SideMenu from "../components/SideMenu";
+import AddTweetForm from "../components/AddTweetForm";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTweets } from "../store/ducks/tweets/actionCreators";
+import { selectTweetsItems } from "../store/ducks/tweets/selectors";
 
 export const useHomeStyles = makeStyles((theme) => ({
   wrapper: {
@@ -75,8 +79,7 @@ export const useHomeStyles = makeStyles((theme) => ({
   },
   tweetFooter: {
     display: "flex",
-    justifyContent: "space-between",
-    width: 450,
+    width: "60%",
   },
   tweet: {
     cursor: "pointer",
@@ -86,6 +89,33 @@ export const useHomeStyles = makeStyles((theme) => ({
       backgroundColor: "#f5f8fa",
     },
   },
+  addForm: {
+    padding: 20,
+  },
+  addFormBody: {
+    display: "flex",
+    width: "100%",
+  },
+  tweetAvatar: {},
+  addFormTextarea: {
+    width: "100%",
+    minHeight: 100,
+    padding: "10px",
+    borderRadius: "10px",
+    marginLeft: 15,
+  },
+  addFormBottom: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  addFormBottomRight: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "30%",
+  },
+  addFormCircleProgress: {},
 }));
 
 const SearchTextField = withStyles(() =>
@@ -94,13 +124,20 @@ const SearchTextField = withStyles(() =>
       borderRadius: 30,
       backgroundColor: "#E6ECF0",
       height: 35,
-      padding: 0,
+      marginTop: 20,
+      paddingLeft: 35,
     },
   })
 )(InputBase);
 
 const Home = () => {
   const classes = useHomeStyles();
+  const dispatch = useDispatch();
+  const tweets = useSelector(selectTweetsItems);
+
+  React.useEffect(() => {
+    dispatch(fetchTweets())
+  }, [dispatch])
 
   return (
     <Container maxWidth="lg" className={classes.wrapper}>
@@ -113,18 +150,18 @@ const Home = () => {
             <Paper className={classes.tweetsHeader}>
               <Typography variant="h6">Main page</Typography>
             </Paper>
-            <Tweet
-              text="Со временем отношения у Марии Федоровны испортились не только с
-              венценосной свекровью, но и с супругом. Павел Петрович становился
-              все более замкнутым, неуравновешенным, он имел любовниц и не
-              скрывал этого."
-              classes={classes}
-              user={{
-                fullname: "Vukolov Anton",
-                username: "@vklvn",
-                avatarUrl: "",
-              }}
-            />
+            <Paper>
+              <AddTweetForm classes={classes} />
+            </Paper>
+            { 
+              tweets.map((tweet) =>
+              <Tweet
+                text={tweet.text}
+                classes={classes}
+                user={tweet.user}
+                key={tweet._id}
+              />
+            )}
           </Paper>
         </Grid>
         <Grid item xs={3}>
