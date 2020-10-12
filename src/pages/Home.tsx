@@ -3,6 +3,7 @@ import {
   Container,
   createStyles,
   Grid,
+  IconButton,
   InputBase,
   makeStyles,
   Paper,
@@ -16,6 +17,9 @@ import AddTweetForm from "../components/AddTweetForm";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTweets } from "../store/ducks/tweets/actionCreators";
 import { selectTweetsItems } from "../store/ducks/tweets/selectors";
+import { Link, Route } from "react-router-dom";
+import { ArrowBack } from "@material-ui/icons";
+import TweetExpanded from "../components/TweetExpended";
 
 export const useHomeStyles = makeStyles((theme) => ({
   wrapper: {
@@ -66,6 +70,8 @@ export const useHomeStyles = makeStyles((theme) => ({
     borderBottom: 0,
   },
   tweetsHeader: {
+    display: 'flex',
+    alignItems: 'center',
     borderTop: 0,
     borderLeft: 0,
     borderRight: 0,
@@ -147,21 +153,43 @@ const Home = () => {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.tweetsWrapper}>
-            <Paper className={classes.tweetsHeader}>
-              <Typography variant="h6">Main page</Typography>
-            </Paper>
+
+            <Route path={['/', '/search']} exact>
+              <Paper className={classes.tweetsHeader}>
+                <Typography variant="h6">Main page</Typography>
+              </Paper>
+            </Route>
+
+            <Route path={'/tweet'}>
+              <Paper className={classes.tweetsHeader}>
+                <IconButton>
+                  <Link to="/">
+                    <ArrowBack />
+                  </Link>
+                </IconButton>
+                <Typography variant="h6">Tweet</Typography>
+              </Paper>
+            </Route>
+
             <Paper>
               <AddTweetForm classes={classes} />
             </Paper>
+            <Route path="/" exact >
             { 
               tweets.map((tweet) =>
               <Tweet
                 text={tweet.text}
                 classes={classes}
                 user={tweet.user}
+                _id={tweet._id}
                 key={tweet._id}
               />
             )}
+            </Route>
+
+            <Route path="/tweet/:id" exact component={ TweetExpanded }>
+            </Route>
+
           </Paper>
         </Grid>
         <Grid item xs={3}>

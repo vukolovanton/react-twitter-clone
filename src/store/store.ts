@@ -9,7 +9,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 export interface RootState {
   tweets: TweetsState,
-  topics: TopicsState
+  topics: TopicsState,
+  tweet: TweetsState,
 }
 
 export const store = createStore(rootReducer, compose(applyMiddleware(sagaMiddleware)));

@@ -9,6 +9,7 @@ import {
   ListAltOutlined,
 } from "@material-ui/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHomeStyles } from "../../pages/Home";
 
 interface SideMenuProps {
@@ -22,10 +23,12 @@ const SideMenu: React.FC<SideMenuProps> = ({
     <ul>
       <li className={classes.sideMenuListItem}>
         <div>
-          <Twitter color="primary" className={classes.sideMenuListItemIcon} />
-          <Typography variant="h6" className={classes.sideMenuListItemLabel}>
-            Home
-          </Typography>
+          <Link to="/">
+            <Twitter color="primary" className={classes.sideMenuListItemIcon} />
+            <Typography variant="h6" className={classes.sideMenuListItemLabel}>
+              Home
+            </Typography>
+          </Link>
         </div>
       </li>
       <li className={classes.sideMenuListItem}>
