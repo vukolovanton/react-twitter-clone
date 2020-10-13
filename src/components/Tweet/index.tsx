@@ -11,7 +11,7 @@ import { useHomeStyles } from "../../pages/Home";
 import { Link } from "react-router-dom";
 
 interface TweetProps {
-  _id: string,
+  id: string,
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
   user: {
@@ -25,10 +25,10 @@ const Tweet: React.FC<TweetProps> = ({
   classes,
   text,
   user,
-  _id
+  id
 }: TweetProps): React.ReactElement => {
   return (
-      <Link to={`/tweet/${_id}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/tweet/${id}`} style={{ textDecoration: 'none' }}>
         <div>
           <Paper
             className={classNames(classes.tweetsHeader, classes.tweet)}

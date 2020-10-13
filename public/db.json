@@ -1,7 +1,7 @@
 {
   "tweets": [
     {
-      "_id": "5f81af167411c9e714a44f72",
+      "id": "5f81af167411c9e714a44f72",
       "text": "Laboris do velit proident aute aliqua exercitation.",
       "user": {
         "fullname": "Lilly",
@@ -10,101 +10,45 @@
       }
     },
     {
-      "_id": "5f81af16e304ce5b76318095",
-      "text": "Consequat velit cillum sit minim do.",
+      "id": "q5qjyswxtj",
+      "text": "`12",
       "user": {
-        "fullname": "Kristin",
-        "username": "Cervantes",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af162d6fbbf5a9369100",
-      "text": "Officia ea sit culpa ullamco officia excepteur aliqua aliquip proident voluptate aliqua.",
-      "user": {
-        "fullname": "Rivers",
-        "username": "Mitchell",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af16c5ee492cd77f7caf",
-      "text": "Nisi in consequat ea mollit reprehenderit ea aliquip laborum enim consequat.",
-      "user": {
-        "fullname": "Christian",
-        "username": "Flowers",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af164d8b15c9af1c2f03",
-      "text": "Do quis ex amet labore quis proident dolor id magna.",
-      "user": {
-        "fullname": "Rowena",
-        "username": "Conway",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af16337442f742bef2e7",
-      "text": "Occaecat eu mollit dolor non voluptate irure mollit excepteur esse.",
-      "user": {
-        "fullname": "Kathleen",
-        "username": "Jennings",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af16d9837c9ee205645c",
-      "text": "Esse elit qui proident irure eiusmod non veniam quis incididunt exercitation.",
-      "user": {
-        "fullname": "Kathie",
-        "username": "Maynard",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af1677c7cb3bdc0bf3cf",
-      "text": "Elit labore enim nulla tempor nostrud ad voluptate irure aliqua est labore anim minim quis.",
-      "user": {
-        "fullname": "Rosemarie",
-        "username": "Oliver",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af16c49b5896916478d1",
-      "text": "Irure sint proident aliqua dolor do culpa cillum enim nulla deserunt labore aliquip.",
-      "user": {
-        "fullname": "Paul",
-        "username": "Williamson",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
-      }
-    },
-    {
-      "_id": "5f81af16d600c87af77082a3",
-      "text": "Disney отменила кинотеатральный релиз «Души» в США и многих других странах и выпустит фильм 25 декабря эксклюзивно в Disney+. Критики уже посмотрели фильм и поделились впечатлениями",
-      "user": {
-        "fullname": "Mona",
-        "username": "Key",
-        "avatarUrl": "https://source.unsplash.com/random/100x100"
+        "fullname": "Sender",
+        "username": "@adam",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
       }
     }
   ],
   "user": {
-    "_id":"5f81af162d6fbbf5a9369100",
+    "id": "5f81af162d6fbbf5a9369100",
     "fullname": "Anton Vukolov",
     "username": "@vukolov",
     "avatarUrl": "https://source.unsplash.com/random/100x100"
   },
   "topics": [
-      {"topic": "All"},
-      {"topic": "those"},
-      {"topic": "moments"},
-      {"topic": "will be"},
-      {"topic": "lost"},
-      {"topic": "like"},
-      {"topic": "tears"},
-      {"topic": "in the rain"}
+    {
+      "topic": "All"
+    },
+    {
+      "topic": "those"
+    },
+    {
+      "topic": "moments"
+    },
+    {
+      "topic": "will be"
+    },
+    {
+      "topic": "lost"
+    },
+    {
+      "topic": "like"
+    },
+    {
+      "topic": "tears"
+    },
+    {
+      "topic": "in the rain"
+    }
   ]
 }

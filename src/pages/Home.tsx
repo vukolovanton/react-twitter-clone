@@ -181,8 +181,8 @@ const Home = () => {
                 text={tweet.text}
                 classes={classes}
                 user={tweet.user}
-                _id={tweet._id}
-                key={tweet._id}
+                id={tweet.id}
+                key={tweet.id}
               />
             )}
             </Route>
